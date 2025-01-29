@@ -1,7 +1,14 @@
+using Mercado.Controllers;
+using Mercado.Interfaces;
+using Mercado.Models;
+using Mercado.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ICabinRepository, CabinRepository>();
 
 var app = builder.Build();
 

@@ -1,33 +1,51 @@
-﻿namespace Mercado.Models
+﻿
+namespace Mercado.Models
 {
-    public class CabinModel
+    using Mercado.Interfaces;
+    using System.ComponentModel.DataAnnotations;
+    
+    /// <summary>
+    /// CabinModel.
+    /// </summary>
+    public class CabinModel: ICabin
     {
+        [Required]
         private string Id { get; set; }
+
+        [Required]
         private int Number { get; set; }
 
-        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CabinModel"/> class.
+        /// </summary>
+        /// <param name="id">Id of Cabin.</param>
+        /// <param name="number">Number of Cabin.</param>
         public CabinModel(string id, int number)
         {
             this.Id = id;
             this.Number = number;
         }
 
-        public string getId()
+        /// <inheritdoc/>
+        public string GetId()
         {
             return this.Id;
         }
 
-        public void setId(string id)
+        /// <inheritdoc/>
+        public void SetId(string id)
         {
             this.Id = id;
         }
 
-        public int getNumber()
+        /// <inheritdoc/>
+        public int GetNumber()
         {
             return this.Number;
         }
 
-        public void setNumber(int number)
+        /// <inheritdoc/>
+        public void SetNumber(int number)
         {
             this.Number = number;
         }
