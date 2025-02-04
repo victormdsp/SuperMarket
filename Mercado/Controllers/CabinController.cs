@@ -31,8 +31,7 @@
             try
             {
                 List<ICabin> cabinList = this.cabinRepository.GetAllCabins();
-                this.ViewBag.CabinList = cabinList;
-                return this.View();
+                return this.View(cabinList);
             }
             catch (Exception e)
             {

@@ -1,11 +1,12 @@
-﻿
-namespace Mercado.Repository
+﻿namespace Mercado.Repository
 {
-
     using Mercado.Interfaces;
     using Mercado.Models;
     using Microsoft.AspNetCore.Mvc;
 
+    /// <summary>
+    /// Repository for Cabin.
+    /// </summary>
     public class CabinRepository : ICabinRepository
     {
         // Fake data
@@ -21,11 +22,9 @@ namespace Mercado.Repository
         {
             try
             {
-                throw new Exception("Funciona o erro, agora vamos ver dos status");
-
                 foreach (ICabin cabin in this.cabinList)
                 {
-                    Console.WriteLine(@$"The id of the cabin is {cabin.getId()}, and the number is {cabin.getNumber()}");
+                    Console.WriteLine(@$"The id of the cabin is {cabin.GetId()}, and the number is {cabin.GetNumber()}");
                 }
 
                 return this.cabinList;
@@ -41,15 +40,16 @@ namespace Mercado.Repository
         {
             try
             {
-                ICabin? cabin = this.cabinList.Find(cabin => cabin.getId().Equals(id));
+                ICabin? cabin = this.cabinList.Find(cabin => cabin.GetId().Equals(id));
                 if (cabin != null)
                 {
-                    Console.WriteLine($@"The cabin id is {cabin.getId()} and the number is {cabin.getNumber()}");
+                    Console.WriteLine($@"The cabin id is {cabin.GetId()} and the number is {cabin.GetNumber()}");
                     return cabin;
                 }
 
                 throw new Exception("Cabin not found");
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 throw;
             }
@@ -66,11 +66,12 @@ namespace Mercado.Repository
         {
             try
             {
-                ICabin? cabinToDelete = this.cabinList.Find(cabin => cabin.getId().Equals(id));
+                ICabin? cabinToDelete = this.cabinList.Find(cabin => cabin.GetId().Equals(id));
                 if (cabinToDelete != null)
                 {
                     return "Cabin deleted";
                 }
+
                 throw new Exception("Cabin not found");
             }
             catch (Exception)
@@ -84,11 +85,12 @@ namespace Mercado.Repository
         {
             try
             {
-                ICabin? cabinToUpdate = this.cabinList.Find(cabin => cabin.getId().Equals(cabinRequest.getId()));
+                ICabin? cabinToUpdate = this.cabinList.Find(cabin => cabin.GetId().Equals(cabinRequest.GetId()));
                 if (cabinToUpdate != null)
                 {
                     return "Cabin updated";
                 }
+
                 throw new Exception("Cabin not found");
             }
             catch (Exception)
@@ -96,6 +98,5 @@ namespace Mercado.Repository
                 throw;
             }
         }
-
     }
 }

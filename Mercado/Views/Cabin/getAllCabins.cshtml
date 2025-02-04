@@ -1,13 +1,20 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
-    <div>Cabin list</div>
-    @for(ICabin cabin in @ViewBag.CabinList)
+    @model List<Mercado.Interfaces.ICabin>
+
+    <div>
+        <h1>Cabin list</h1>
+    </div>
+    @foreach(var cabin in @Model)
     {
         <div>
-            <h1>Cabin @cabin.getNumber()</h1>
-            <p>Cabin Id: @cabin.getId()</p>
+            <h2>Cabin @cabin.GetNumber()</h2>
+            <p>Cabin Id: @cabin.GetId()</p>
+
+            @Html.ActionLink("See more infos.", cabin.GetId(), "getCabin")
         </div>
     }
 

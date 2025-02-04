@@ -1,20 +1,13 @@
-﻿
-namespace Mercado.Models
+﻿namespace Mercado.Models
 {
-    using Mercado.Interfaces;
     using System.ComponentModel.DataAnnotations;
-    
+    using Mercado.Interfaces;
+
     /// <summary>
     /// CabinModel.
     /// </summary>
-    public class CabinModel: ICabin
+    public class CabinModel : ICabin
     {
-        [Required]
-        private string Id { get; set; }
-
-        [Required]
-        private int Number { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CabinModel"/> class.
         /// </summary>
@@ -25,6 +18,12 @@ namespace Mercado.Models
             this.Id = id;
             this.Number = number;
         }
+
+        [Required]
+        private string Id { get; set; }
+
+        [Required]
+        private int Number { get; set; }
 
         /// <inheritdoc/>
         public string GetId()
